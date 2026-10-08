@@ -178,3 +178,25 @@ Catálogo atual:
 Catálogo atual:
 #4 - charmander | Tipos: fire | Altura: 6 | Peso: 85
 ```
+
+
+## Organização do Kanban
+
+O trabalho foi organizado em um quadro Kanban no GitHub Projects, com as colunas Backlog, A Fazer, Em Andamento e Concluído.
+
+Link do Kanban: https://github.com/users/CruzPamela/projects/1/views/1
+
+## Branches utilizadas
+
+- `main`: versão final e estável do projeto.
+- `develop`: onde o trabalho pronto é reunido antes de ir para a `main`.
+- `feat/pokedex`: onde o código do projeto foi desenvolvido.
+- `docs/readme`: onde este README foi escrito.
+
+O código passou da `feat/pokedex` para a `develop` e da `develop` para a `main` por meio de pull requests.
+
+## Melhorias futuras
+
+- Integrar o Kanban ao VS Code e aos commits, para que um commit ligado a um cartão o mova para Concluído automaticamente
+- Exibir HP, ataque e defesa dos Pokémon
+- Criar treinadores, em que cada treinador teria os seus próprios Pokémon
