@@ -200,3 +200,43 @@ O código passou da `feat/pokedex` para a `develop` e da `develop` para a `main`
 - Integrar o Kanban ao VS Code e aos commits, para que um commit ligado a um cartão o mova para Concluído automaticamente
 - Exibir HP, ataque e defesa dos Pokémon
 - Criar treinadores, em que cada treinador teria os seus próprios Pokémon
+
+
+## Conceitos aplicados
+
+### TypeScript
+
+- TypeScript é uma linguagem de programação que acrescenta tipos de dados ao JavaScript. Um dos lugares onde eu usei foi na função `buscarPokemon`: o parâmetro é um texto (`string`) e o retorno é `Promise<PokemonResumo | null>`. Ele ajuda a identificar erros enquanto desenvolvemos o programa, antes mesmo de rodar.
+
+### Interface PokemonResumo
+
+- A interface `PokemonResumo` serve para definir o formato dos dados de um Pokémon: `id`, `nome`, `tipos`, `altura` e `peso`. Ela é usada como retorno da função `buscarPokemon` e na lista da classe `CatalogoPokemon`. Eu provoquei um erro de propósito, colocando um texto onde devia ir um número, para testar se a interface estava funcionando. Ela ajuda a identificar se os tipos dos dados (`number` ou `string`) estão corretos.
+
+### Fetch e async/await
+
+- `fetch` é usado para fazer uma requisição para uma API. Usei para solicitar as informações da PokeAPI. Ele trabalha de forma assíncrona e traz uma `Promise`. `Promise` é uma promessa de um resultado que chega depois.
+- `async` indica que aquela função trabalha de forma assíncrona. Foi usado na função `buscarPokemon`, e faz com que ela retorne uma `Promise`.
+- `await` faz a função aguardar o resultado antes de seguir para a próxima linha. Também foi usado na função `buscarPokemon`, para esperar a resposta do `fetch` e a leitura dos dados (`resposta.json()`).
+
+### Tratamento de erros
+
+- Tratamento de erro é uma forma do programa lidar com algum erro não esperado, sem quebrar. Usei o `try/catch` na função `buscarPokemon` para dois casos:
+  - **Pokémon inexistente (404):** o programa mostra `[ERRO] Pokémon não encontrado.` e devolve o valor `null`.
+  - **Falha na consulta (por exemplo, sem internet):** o programa cai no `catch`, mostra `[ERRO] Não foi possível buscar o Pokémon.` e também devolve `null`.
+- Quando o Pokémon existe, o programa mostra `[OK] Pokémon encontrado: nome` e devolve os dados. Em todos os casos o programa continua funcionando.
+
+### Métodos de array
+
+- Os métodos de array são ferramentas para trabalhar em cima de uma lista. Os que usei foram:
+  - `.map`, no `PokeApiService`: mapeia a lista de tipos da API e cria uma lista nova, só com os nomes.
+  - `.some`, na classe `CatalogoPokemon` (em `adicionar` e `remover`): pergunta se algum Pokémon da lista já tem aquele `id`.
+  - `.forEach`, na classe `CatalogoPokemon` (em `listar`): executa uma ação, mostrar na tela, para cada Pokémon da lista.
+  - `.filter`, na classe `CatalogoPokemon` (em `remover`): cria uma lista nova só com os Pokémon que têm `id` diferente do que será removido.
+
+### Classe CatalogoPokemon
+
+- Classe é uma forma de organizarmos as informações em um único lugar. Além de organizar, também podemos proteger: usei `private` no atributo `pokemons`, a lista de Pokémon do catálogo, para deixar as informações protegidas e só a própria classe poder mexer nela. Ela ajuda a manter as informações organizadas em um único lugar e não espalhadas pelo código.
+- Atributo `pokemons` (privado): guarda a lista de Pokémon em memória.
+- Método `adicionar`: coloca um Pokémon na lista, mas avisa se ele já está lá.
+- Método `listar`: mostra o catálogo na tela, ou avisa que está vazio.
+- Método `remover`: tira um Pokémon pelo `id`, ou avisa que não encontrou.
