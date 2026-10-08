@@ -1,5 +1,6 @@
 import { PokemonResumo, PokemonApiResponse } from "./models/Pokemon";
 import { buscarPokemon } from "./services/PokeApiService";
+import { CatalogoPokemon } from "./models/CatalogoPokemon";
 
 const teste : PokemonResumo = {
     id: 25,
@@ -27,8 +28,15 @@ console.log(respostaFalsa.types[0].type.name);
 
 
 async function testar() {
-  await buscarPokemon("pikachu");
-  await buscarPokemon("pokemon-inexistente");
+  const catalogo = new CatalogoPokemon();
+
+  const pikachu = await buscarPokemon("pikachu");
+
+  if (pikachu !== null) {
+    catalogo.adicionar(pikachu);
+    catalogo.adicionar(pikachu);
+  }
+
 }
 
 testar();
