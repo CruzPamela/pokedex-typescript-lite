@@ -37,8 +37,11 @@ async function testar() {
     catalogo.adicionar(pikachu);
     catalogo.adicionar(pikachu);
   }
-  
+
   catalogo.listar();
+  catalogo.remover(25);
+  catalogo.listar();
+  catalogo.remover(999);
 
 }
 
