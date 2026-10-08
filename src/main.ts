@@ -25,15 +25,22 @@ console.log(respostaFalsa.types[0].type);
 console.log(respostaFalsa.types[0].type.name);
 
 
+// async function testar() {
+//   const pikachu = await buscarPokemon("pikachu");
+//   console.log(pikachu);
+
+//   const charmander = await buscarPokemon("charmander");
+//   console.log(charmander);
+
+//   const porId = await buscarPokemon("4");
+//   console.log(porId);
+// };
+
+
 async function testar() {
-  const pikachu = await buscarPokemon("pikachu");
-  console.log(pikachu);
-
-  const charmander = await buscarPokemon("charmander");
-  console.log(charmander);
-
-  const porId = await buscarPokemon("4");
-  console.log(porId);
-};
+  await buscarPokemon("pikachu");
+  await buscarPokemon("pokemon-inexistente");
+}
 
 testar();
+
