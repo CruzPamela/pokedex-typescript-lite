@@ -1,4 +1,5 @@
 import { PokemonResumo, PokemonApiResponse } from "./models/Pokemon";
+import { buscarPokemon } from "./services/PokeApiService";
 
 const teste : PokemonResumo = {
     id: 25,
@@ -22,3 +23,17 @@ console.log(respostaFalsa.types);
 console.log(respostaFalsa.types[0]);
 console.log(respostaFalsa.types[0].type);
 console.log(respostaFalsa.types[0].type.name);
+
+
+async function testar() {
+  const pikachu = await buscarPokemon("pikachu");
+  console.log(pikachu);
+
+  const charmander = await buscarPokemon("charmander");
+  console.log(charmander);
+
+  const porId = await buscarPokemon("4");
+  console.log(porId);
+};
+
+testar();
