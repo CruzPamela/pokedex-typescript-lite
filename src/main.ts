@@ -29,6 +29,7 @@ console.log(respostaFalsa.types[0].type.name);
 
 async function testar() {
   const catalogo = new CatalogoPokemon();
+  catalogo.listar();
 
   const pikachu = await buscarPokemon("pikachu");
 
@@ -36,6 +37,8 @@ async function testar() {
     catalogo.adicionar(pikachu);
     catalogo.adicionar(pikachu);
   }
+  
+  catalogo.listar();
 
 }
 
