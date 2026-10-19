@@ -1,5 +1,9 @@
 # Pokédex TypeScript Lite
 
+## Vídeo de apresentação
+
+[Assistir ao vídeo de apresentação](https://drive.google.com/file/d/19Q_wAqvJcobgIQ_pWWGAxp26N08VfhCQ/view?usp=sharing)
+
 ## Sobre o projeto
 
 O Pokédex TypeScript Lite é uma aplicação de terminal feita com Node.js e TypeScript. Ela consulta dados de Pokémon na PokeAPI, transforma a resposta em um objeto simples e organiza os Pokémon buscados em um catálogo local. O catálogo fica **em memória**: ele existe enquanto o programa está rodando e não é salvo em arquivo.
